@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../../contexts/user.context";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -17,6 +18,8 @@ const defaultFormFields = {
 
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
+
+  const { setCurrentUser } = useContext(UserContext);
 
   const { displayName, email, password, confirmPassword } = formFields;
 
@@ -45,7 +48,7 @@ const SignUpForm = () => {
         displayName: displayName,
       });
       resetFormFields();
-      console.log(response);
+      setCurrentUser(user);
     } catch (error) {
       console.log("error in the user creation", error);
     }
@@ -88,7 +91,9 @@ const SignUpForm = () => {
           name="confirmPassword"
           value={confirmPassword}
         />
-        <Button buttonType='inverted' type="submit">Sign Up</Button>
+        <Button buttonType="inverted" type="submit">
+          Sign Up
+        </Button>
       </form>
     </div>
   );
