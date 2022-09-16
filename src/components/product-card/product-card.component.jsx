@@ -5,10 +5,11 @@ import "./product-card.styles.scss";
 
 const ProductCard = ({ product }) => {
   const { name, price, imageUrl } = product;
-  //const { setNumberOfItems } = useContext(CartContext);
+  const { AddItem /* setItemsCount */ } = useContext(CartContext);
 
-  const handleClick = () => {
-    //setNumberOfItems((prev) => prev + 1);
+  const addProductToCart = () => {
+    AddItem(product);
+    //setItemsCount((prev) => prev + 1);
   };
 
   return (
@@ -18,7 +19,7 @@ const ProductCard = ({ product }) => {
         <span className="name">{name}</span>
         <span className="price">{price}</span>
       </div>
-      <Button onClick={handleClick} buttonType="inverted">
+      <Button onClick={addProductToCart} buttonType="inverted">
         Add to card
       </Button>
     </div>
