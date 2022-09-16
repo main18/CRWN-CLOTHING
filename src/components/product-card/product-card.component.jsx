@@ -5,10 +5,10 @@ import "./product-card.styles.scss";
 
 const ProductCard = ({ product }) => {
   const { name, price, imageUrl } = product;
-  const { AddItem /* setItemsCount */ } = useContext(CartContext);
+  const { addItem /* setItemsCount */ } = useContext(CartContext);
 
   const addProductToCart = () => {
-    AddItem(product);
+    addItem(product);
     //setItemsCount((prev) => prev + 1);
   };
 
