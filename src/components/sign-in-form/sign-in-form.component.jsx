@@ -1,5 +1,7 @@
 import { useState } from "react";
-import Button from "../../components/button/button.component";
+import Button, {
+  BUTTON_TYPE_CLASSES,
+} from "../../components/button/button.component";
 import FormInput from "../../components/form-input/form-input.components";
 import {
   createUserDocumentFromAuth,
@@ -74,10 +76,12 @@ const SignInForm = () => {
           value={password}
         />
         <div className="buttons-container">
-          <Button buttonType="inverted" type="submit">
-            Sign in
-          </Button>
-          <Button type="button" buttonType="google" onClick={logGoogleUser}>
+          <Button type="submit">Sign in</Button>
+          <Button
+            type="button"
+            buttonType={BUTTON_TYPE_CLASSES.google}
+            onClick={logGoogleUser}
+          >
             Google sign in
           </Button>
         </div>
